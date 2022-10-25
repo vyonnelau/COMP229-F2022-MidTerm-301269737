@@ -1,3 +1,13 @@
+/////////////////////////////////////////////
+//
+//  File Name:      /server/config/app.js
+//  Author:         Lau, Wai Yung
+//  Student ID:     301269737
+//  Date:           25 Oct 2022
+//  Web app name:   https://my-vy-app.herokuapp.com/
+//
+/////////////////////////////////////////////
+
 // moddules for node and express
 let createError = require("http-errors");
 let express = require("express");

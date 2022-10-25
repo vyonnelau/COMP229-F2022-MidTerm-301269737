@@ -1,3 +1,13 @@
+/////////////////////////////////////////////
+//
+//  File Name:      /server/routes/cars.js
+//  Author:         Lau, Wai Yung
+//  Student ID:     301269737
+//  Date:           25 Oct 2022
+//  Web app name:   https://my-vy-app.herokuapp.com/
+//
+/////////////////////////////////////////////
+
 // modules required for routing
 let express = require("express");
 let router = express.Router();
@@ -7,6 +17,7 @@ let mongoose = require("mongoose");
 let car = require("../models/cars");
 
 /* GET cars List page. READ */
+// get the car list from DB and display on cars/index.ejs
 router.get("/", (req, res, next) => {
   // find all cars in the cars collection
   car.find((err, cars) => {
@@ -22,6 +33,7 @@ router.get("/", (req, res, next) => {
 });
 
 //  GET the Car Details page in order to add a new Car
+//  when "Add a car" button is pressed, go to add.ejs
 router.get("/add", (req, res, next) => {
   res.render("cars/add", {
     title: "Add a Car",
@@ -29,6 +41,7 @@ router.get("/add", (req, res, next) => {
 });
 
 // POST process the Car  Details page and create a new Car  - CREATE
+// add a car details from user's input and insert to DB
 router.post("/add", (req, res, next) => {
   let newCar = car({
     Carname: req.body.Carname,
@@ -48,6 +61,8 @@ router.post("/add", (req, res, next) => {
 });
 
 // GET the Car Details page in order to edit an existing Car
+// when "Update" button is pressed, go to details.ejs
+// with the particular car selected
 router.get("/details/:id", (req, res, next) => {
   let id = req.params.id; //id of actual object
 
@@ -66,6 +81,7 @@ router.get("/details/:id", (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
+// update a car details from user's input and update the DB using the ID
 router.post("/details/:id", (req, res, next) => {
   let id = req.params.id; //id of actual object
 
@@ -87,12 +103,16 @@ router.post("/details/:id", (req, res, next) => {
   });
 });
 
+// when "Delete" button is pressed, go to delete.ejs
 router.get("/delete", (req, res, next) => {
   res.render("cars/delete", {
     title: "Delete a Car",
   });
 });
 
+// POST - process the information passed from the delete page
+// delete multiple DB entries by specifying Car Name and/or Price Range
+// Car name is optional but Price range is mandatory
 router.post("/delete", (req, res, next) => {
   // to delete
   // car name is not specified, only delete using price range
