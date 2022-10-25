@@ -15,52 +15,35 @@
                   id="carnameTextField"
                   placeholder="Enter the Car Name:"
                   name="Carname"
-                  required
                 />
               </div>
       
               <div class="from-group">
-                <label for="categoryTextField">Category</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="categoryTextField"
-                  placeholder="Enter the Category:"
-                  name="Category"
-                  required
-                />
-              </div>
-      
-              <div class="from-group">
-                <label for="carmodelTextField">Car Model:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="carmodelTextField"
-                  placeholder="Enter the Car Model:"
-                  name="Carmodel"
-                  required
-                />
-              </div>
-
-              <div class="from-group">
-                <label for="priceTextField">Price</label>
+                <label for="priceTextField">Price Range</label>
                 <input
                   type="text"
                   class="form-control"
                   id="priceTextField"
-                  placeholder="Enter the Price:"
-                  name="Price"
+                  placeholder="Enter the Min Price:"
+                  name="minprice"
+                  required
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="priceTextField"
+                  placeholder="Enter the Max Price:"
+                  name="maxprice"
                   required
                 />
               </div>
       
               <button class="btn btn-primary" type="submit">
-                <i class="fa fa-check-square-o"></i>Submit
+                <i class="fa fa-trash"></i> Delete
               </button>
       
               <a href="/cars" class="btn btn-warning">
-                <i class="fa fa-undo"></i>Cancel
+                <i class="fa fa-undo"></i> Cancel
               </a>
             </form>
           </div>

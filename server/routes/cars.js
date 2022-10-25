@@ -87,6 +87,29 @@ router.post("/details/:id", (req, res, next) => {
   });
 });
 
+router.get("/delete", (req, res, next) => {
+  res.render("cars/delete", {
+    title: "Delete a Car",
+  });
+});
+
+router.post("/delete", (req, res, next) => {
+  // to delete
+  // car name is not specified, only delete using price range
+  if (req.body.Carname == "")
+    myquery = { Price : { $gt :  req.body.minprice, $lt : req.body.maxprice}};
+  else
+    myquery = { Carname: req.body.Carname, Price : { $gt :  req.body.minprice, $lt : req.body.maxprice}};
+
+  //car.find(myquery, function(err, cars) {
+  car.deleteMany(myquery, function(err, cars) {
+    if (err) throw err;
+    console.log(myquery);
+    console.log(cars + " document(s) deleted");
+    res.redirect("/cars");
+  });
+});
+
 // GET - process the delete
 router.get("/delete/:id", (req, res, next) => {
   let id = req.params.id;
